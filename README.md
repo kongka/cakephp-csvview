@@ -26,7 +26,7 @@ like JsonView or XmlView.
 _[Using [Composer](http://getcomposer.org/)]_
 
 ```
-composer require kongka/cakephp-csvview:~3.0
+composer require kongka/cakephp-csvview:dev-master
 ```
 
 ### Enable plugin
