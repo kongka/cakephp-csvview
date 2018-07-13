@@ -33,10 +33,6 @@ composer require friendsofcake/cakephp-csvview:~3.0
 
 Load the plugin in your app's `config/bootstrap.php` file:
 
-	Plugin::load('CsvView');
-
-In CakePHP version 3.5 or newer you should use:
-
     Plugin::load('CsvView', ['routes' => true]);
 
 ## Usage
@@ -53,7 +49,7 @@ public function export()
     ];
     $_serialize = 'data';
 
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('data', '_serialize'));
 }
 ```
@@ -72,7 +68,7 @@ public function export()
 
     $_serialize = ['data', 'data_two', 'data_three'];
 
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('data', 'data_two', 'data_three', '_serialize'));
 }
 ```
@@ -93,7 +89,7 @@ public function export()
     $_header = ['Column 1', 'Column 2', 'Column 3'];
     $_footer = ['Totals', '400', '$3000'];
 
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('data', '_serialize', '_header', '_footer'));
 }
 ```
@@ -118,7 +114,7 @@ public function export()
     $_eol = '~';
     $_bom = true;
 
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('data', '_serialize', '_delimiter', '_enclosure', '_newline', '_eol', '_bom'));
 }
 ```
@@ -164,7 +160,7 @@ public function export()
         'created'
     ];
 
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('posts', '_serialize', '_header', '_extract'));
 }
 ```
@@ -216,7 +212,7 @@ public function export()
 {
     $posts = $this->Post->find('all');
     $_serialize = null;
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('posts', '_serialize'));
 }
 ```
@@ -267,8 +263,8 @@ public function export()
     ];
     $_serialize = 'data';
 
-    $this->response->download('my_file.csv'); // <= setting the file name
-    $this->viewBuilder()->className('CsvView.Csv');
+    $this->response = $this->response->withDownload('my_file.csv'); // <= setting the file name
+    $this->viewBuilder()->setClassName('CsvView.Csv');
     $this->set(compact('data', '_serialize'));
 }
 ```
