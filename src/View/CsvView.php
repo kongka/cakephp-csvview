@@ -138,7 +138,7 @@ class CsvView extends View
         parent::__construct($request, $response, $eventManager, $viewOptions);
 
         if ($response && $response instanceof Response) {
-            $response->type('csv');
+            $response->withType('csv');
         }
     }
 
