@@ -135,11 +135,10 @@ class CsvView extends View
         EventManager $eventManager = null,
         array $viewOptions = []
     ) {
-        parent::__construct($request, $response, $eventManager, $viewOptions);
-
         if ($response && $response instanceof Response) {
-            $response->withType('csv');
+            $response = $response->withType('csv');
         }
+        parent::__construct($request, $response, $eventManager, $viewOptions);
     }
 
     /**
